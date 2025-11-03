@@ -8,10 +8,7 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y libpq-dev gcc
-
-# Copy requirements if you have one, otherwise create inline
+# Copy requirements if you have one
 COPY requirements.txt .
 
 # Install Python dependencies
