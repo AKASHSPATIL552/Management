@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Employee List</title>
+     <style>
+           table {
+                width: 100%;
+                border-collapse: collapse;
+           }
+           th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+           }
+           th {
+                background-color: #f2f2f2;
+           }
+           button {
+                margin-right: 5px;
+           }
+           a {
+                text-decoration: none;
+                color: black;
+           }
+           a:hover {
+                    text-decoration: underline;
+               }
+               h1 {
+                    text-align: center;
+           }
+          
+     </style>
+     
+</head>
+<body>
+     <h1>Employee List</h1>
+     {% if messages %}
+         <ul>
+             {% for message in messages %}
+                 <li style="color: green;">{{ message }}</li>
+                 
+             {% endfor %}
+         </ul>
+     {% endif %}
+     <table>
+         <thead>
+             <tr>
+                 <th>ID</th>
+                 <th>Name</th>
+                 <th>Email</th>
+               
+                 <th>Position</th>
+                 <th>Department</th>
+                 <th>Hire Date</th>
+                 <th>Actions</th>
+             </tr>
+         </thead>
+         <tbody>
+          {% if employees %}
+             {% for employee in employees %}
+             <tr>
+                 <td>{{ forloop.counter }}</td>
+                 <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                    <td>{{ employee.email }}</td>
+                 <td>{{ employee.position }}</td>
+                 <td>{{ employee.department }}</td>
+                 <td>{{ employee.hire_date }}</td>
+                 <td>
+                     <button><a href="{% url 'edit_employee' employee.id %}">Edit</a></button>
+                     <button><a href="{% url 'delete_employee' employee.id %}">Delete</a></button>
+                 </td>
+             </tr>
+             {% endfor %}
+          {% else %}
+                <tr>
+                      <td colspan="7">No employees found.</td>
+                </tr>
+           {% endif %}
+           <tr>
+                    <td colspan="7"><button><a href="{% url 'add_employee' %}">Add New Employee</a></button></td>
+           </tr>
+         </tbody>
+     </table>
+
+     
+</body>
+</html>
