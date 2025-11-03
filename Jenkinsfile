@@ -10,12 +10,13 @@ pipeline {
             }
         }
         stage('Setup') {
-            steps {
-                bat 'python -m venv %VENV%'
-                bat '%VENV%\\Scripts\\pip install --upgrade pip'
-                bat '%VENV%\\Scripts\\pip install -r requirements.txt'
-            }
-        }
+    steps {
+        bat 'python -m venv %VENV%'
+        bat '%VENV%\\Scripts\\python.exe -m pip install --upgrade pip'
+        bat '%VENV%\\Scripts\\python.exe -m pip install -r requirements.txt'
+    }
+}
+
         stage('Lint') {
             steps {
                 bat '%VENV%\\Scripts\\pip install flake8'
