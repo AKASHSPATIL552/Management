@@ -14,4 +14,4 @@ services:
       - DEBUG=1
       - DJANGO_SUPERUSER_USERNAME=admin
       - DJANGO_SUPERUSER_PASSWORD=admin123
-      - DJANGO_SUPERUSER_EMAIL=akashsp1928@gmail.com
+      
